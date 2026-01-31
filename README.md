@@ -69,7 +69,6 @@ NEXTAUTH_URL=http://localhost:3000
 docker-compose up -d --build
 
 4️⃣ Execute as migrations
-docker exec -it petshop_app_1 sh
 npx prisma migrate dev
 
 5️⃣ Acesse o sistema
