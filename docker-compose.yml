@@ -14,9 +14,9 @@ services:
 
   app:
     build: .
-    restart: always    
+    restart: always
     env_file:
-      - .env.production
+      - .env
     depends_on:
       - db
     ports:
