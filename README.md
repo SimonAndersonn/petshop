@@ -1,8 +1,13 @@
+👤 Autor
+Anderson Simon
+📧 Email: simon.duartte@gmail.com
+📱 WhatsApp: (81) 9 9565-6552
+
 # 🐾 Petshop Dashboard – Fullstack Challenge
 
 Dashboard web para gerenciamento de pets (CRUD), desenvolvido como parte do desafio para Desenvolvedor Fullstack Jr.
 
-O sistema permite que usuários autenticados cadastrem, editem, visualizem e excluam animais, respeitando regras de acesso.
+O sistema permite que usuários autenticados cadastrem, editem, visualizem e excluam animais, respeitando regras de acesso e controle de permissões.
 
 ---
 
@@ -32,10 +37,9 @@ O sistema permite que usuários autenticados cadastrem, editem, visualizem e exc
 ## 📋 Funcionalidades
 
 - ✅ Cadastro de usuário
-- ✅ Login
-- ✅ Autenticação
-- ✅ CRUD de Pets
-- ✅ Controle de permissões
+- ✅ Login e autenticação
+- ✅ CRUD completo de pets
+- ✅ Controle de acesso por usuário
 - ✅ Pesquisa por nome do pet ou dono
 - ✅ Interface responsiva (Mobile First)
 
@@ -43,42 +47,58 @@ O sistema permite que usuários autenticados cadastrem, editem, visualizem e exc
 
 ## ⚙️ Requisitos
 
-- Docker
-- Docker Compose
+- Node.js (>= 18)
+- Docker (opcional para ambiente isolado)
 - Git
 
 ---
 
-## 🖥️ Rodando Localmente (Docker)
+## 🖥️ Rodando Localmente (Modo Desenvolvimento)
 
-### 1️⃣ Clone o projeto
+### 1️⃣ Clonar o repositório
 
 ```bash
-git clone https://github.com/SEU_USUARIO/petshop.git
+git clone https://github.com/SimonAndersonn/petshop.git
 cd petshop
+2️⃣ Instalar dependências
+npm install
+3️⃣ Configurar variáveis de ambiente
+Crie o arquivo .env:
 
-2️⃣ Configure o ambiente
-
-Crie o arquivo .env.local:
-
-DATABASE_URL=postgresql://petuser:petpass@db:5432/petdb
+DATABASE_URL=postgresql://petuser:petpass@localhost:5432/petdb
 NEXTAUTH_SECRET=local-secret
 NEXTAUTH_URL=http://localhost:3000
 
-3️⃣ Suba os containers
-docker-compose up -d --build
-
-4️⃣ Execute as migrations
+4️⃣ Executar migrations
 npx prisma migrate dev
+5️⃣ Iniciar servidor
+npm run dev
+Acesse:http://localhost:3000
+🐳 Rodando com Docker
+Subir ambiente completo
+docker-compose up -d --build
+Executar migrations
+docker exec -it petshop-app-1 sh
+npx prisma migrate dev
+Acesse:
 
-5️⃣ Acesse o sistema
 http://localhost:3000
-
-☁️ Deploy (Produção)
-
+☁️ Deploy (Produção – AWS)
 O projeto é implantado em uma instância AWS EC2 utilizando Docker.
 
-Processo:
+Processo de atualização
 git pull
 docker-compose down
 docker-compose up -d --build
+🧠 Decisões Técnicas
+Uso de Docker para padronização de ambientes
+
+Prisma para versionamento e integridade do banco
+
+Separação entre desenvolvimento e produção
+
+Variáveis sensíveis protegidas por .env
+
+Build multi-stage para otimização de imagem
+
+
